@@ -11,11 +11,13 @@ let missed = 0;
 let phrases = [
 	"Pat do your homework", 
 	"Pat stop teasing turtle", 
-	"Pat stop looking at the TV", 
+	"Pat stop looking at the tv", 
 	"Pat brush your teeth", 
 	"Pat do not tease your sister"
 
 ]
+
+
 
 function getRandomPhraseAsArray(arr) {
 	let randomString = arr[Math.floor(Math.random()*arr.length)];
@@ -44,7 +46,7 @@ addPhraseToDisplay(phraseArray);
  	for (var i = 0; i < letters.length; i++) {
  		//check if they match
  		if (btn.target.textContent === letters[i].textContent.toLowerCase()) {
- 			letters[i].classList = "show"; 
+ 			letters[i].classList.add("show"); 
  			guessed = true; 
  		}
  	}
@@ -59,18 +61,28 @@ addPhraseToDisplay(phraseArray);
  		
  	} else if (missed === 5) {
  		overlay.style.display = ""; 
- 		overlay.className = "lose"; 
+ 		overlay.className = "lose";
+ 		buttonStart.display = "block";  
  		overlay.innerHTML = "<h1>You lose, now go do your homework!</h1>"; 
-
+ 		 
  	}
  }
 
+ function resetGame() {
+ 	overlay.style.display = "flex"; 
+
+ 	//to reset the game we need to replenish the hearts
+ 	//we need to erase the phrase that is showing
+ 	//we need to reset the number of misses
+ 	//
+ }
+
  qwerty.addEventListener('click', (event) => {
- 		const letterFound = checkLetter(event);
+ 		let letterFound = checkLetter(event);
 
  	if (event.target.tagName === "BUTTON") {
- 		event.target.className = "chosen"; 
- 		event.target.disabled = true; 
+ 		event.target.classList = "chosen"; 
+ 		event.target.disabled = "true"; 
  		if (letterFound === false && missed < 5) {
  			heart[missed].setAttribute('src', 'images/lostHeart.png'); 
  			missed++; 
