@@ -60,7 +60,7 @@ addPhraseToDisplay(phraseArray);
  	} else if (missed === 5) {
  		overlay.style.display = ""; 
  		overlay.className = "lose"; 
- 		overlay.innerHTML = "<h1>You lose fuckface</h1>"; 
+ 		overlay.innerHTML = "<h1>You lose, now go do your homework!</h1>"; 
 
  	}
  }
