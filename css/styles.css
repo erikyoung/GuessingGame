@@ -18,7 +18,7 @@
 
 /* svg animations stuff */ 
 
-svg {
+.svg {
   width: 100%;
   
 }
@@ -186,12 +186,21 @@ button {
   flex-direction: column;
   position: fixed;
   color: #FFFFFF;
+  
   justify-content: center;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   border-radius: 5px;
+}
+
+.new-button {
+  display: flex;
+  text-align: center;
+  width: 30%;
+  margin: 0 auto;
+  padding-left: 80px;
 }
 
 .title {

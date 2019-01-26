@@ -6,6 +6,9 @@ const ul = document.getElementsByTagName('ul')[0];
 const startButton = document.querySelector('.start-button'); 
 const lettersShown = document.getElementsByClassName('show'); 
 const heart = document.getElementsByTagName('img');
+const svg = document.querySelector('.svg'); 
+const title = document.querySelector('.title'); 
+const overlayTitle = document.querySelector("h2");
 let missed = 0; 
 
 let phrases = [
@@ -44,7 +47,7 @@ addPhraseToDisplay(phraseArray);
  function checkLetter(btn) {
  	let guessed = false; 
  	for (var i = 0; i < letters.length; i++) {
- 		//check if they match
+ 		
  		if (btn.target.textContent === letters[i].textContent.toLowerCase()) {
  			letters[i].classList.add("show"); 
  			guessed = true; 
@@ -55,21 +58,27 @@ addPhraseToDisplay(phraseArray);
 
  function checkWin() {
  	if (letters.length === lettersShown.length) {
- 		overlay.style.display = "";
+ 		overlay.style.display = ""
  		overlay.className = "win"; 
- 		overlay.innerHTML = "You Win!";
+ 		title.innerHTML = "<h1>You Win!</h1>";
+      	startButton.textContent = "Start Again!"; 
+      	svg.style.display = "none"; 
+ 		
  		
  	} else if (missed === 5) {
- 		overlay.style.display = ""; 
+ 		overlay.style.display = "";
  		overlay.className = "lose";
- 		buttonStart.display = "block";  
- 		overlay.innerHTML = "<h1>You lose, now go do your homework!</h1>"; 
+ 		title.innerHTML = "<h1>Game Over!</h1>";
+      	startButton.textContent = "Start Again!"; 
+      	svg.style.display = "none"; 
  		 
- 	}
+ 	} 
  }
 
  function resetGame() {
- 	overlay.style.display = "flex"; 
+ 	
+ 	overlay.style.display ="flex"; 
+ 	missed = 0; 
 
  	//to reset the game we need to replenish the hearts
  	//we need to erase the phrase that is showing
