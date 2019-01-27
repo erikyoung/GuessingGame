@@ -10,6 +10,7 @@ const svg = document.querySelector('.svg');
 const title = document.querySelector('.title'); 
 const overlayTitle = document.querySelector("h2");
 let missed = 0; 
+let reset = false; 
 
 let phrases = [
 	"Pat do your homework", 
@@ -76,13 +77,16 @@ addPhraseToDisplay(phraseArray);
  }
 
  function resetGame() {
- 	
+ 	if(reset = true) {
+
  	overlay.style.display ="flex"; 
  	missed = 0; 
  	resetHearts(); 
  	changeChosenButtons(); 
  	returnLettersToNormal();
- 	//need to make it change the phrase
+ 	 
+    
+     }
  }
 
  function changeChosenButtons() {
