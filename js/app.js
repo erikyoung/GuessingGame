@@ -81,10 +81,8 @@ addPhraseToDisplay(phraseArray);
  	missed = 0; 
  	resetHearts(); 
  	changeChosenButtons(); 
- 	//to reset the game we need to replenish the hearts
- 	//we need to erase the phrase that is showing
- 	//we need to reset the number of misses
- 	//
+ 	returnLettersToNormal();
+ 	//need to make it change the phrase
  }
 
  function changeChosenButtons() {
@@ -96,6 +94,12 @@ addPhraseToDisplay(phraseArray);
  	}
  		
 
+ }
+
+ function returnLettersToNormal() {
+ 	for (var i = 0; i < letters.length; i++) {
+ 		letters[i].classList.remove('show');  
+ 	}
  }
 
  function resetHearts () {
