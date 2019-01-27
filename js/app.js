@@ -58,7 +58,7 @@ addPhraseToDisplay(phraseArray);
 
  function checkWin() {
  	if (letters.length === lettersShown.length) {
- 		overlay.style.display = ""
+ 		overlay.style.display = ""; 
  		overlay.className = "win"; 
  		title.innerHTML = "<h1>You Win!</h1>";
       	startButton.textContent = "Start Again!"; 
@@ -71,7 +71,7 @@ addPhraseToDisplay(phraseArray);
  		title.innerHTML = "<h1>Game Over!</h1>";
       	startButton.textContent = "Start Again!"; 
       	svg.style.display = "none"; 
- 		 
+ 		resetGame(); 
  	} 
  }
 
