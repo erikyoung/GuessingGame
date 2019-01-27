@@ -199,7 +199,8 @@ button {
 
 .has-wrap {
   display:flex;
-  flex-wrap: wrap 500px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .new-button {

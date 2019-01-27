@@ -63,7 +63,7 @@ addPhraseToDisplay(phraseArray);
  		title.innerHTML = "<h1>You Win!</h1>";
       	startButton.textContent = "Start Again!"; 
       	svg.style.display = "none"; 
- 		
+ 		resetGame(); 
  		
  	} else if (missed === 5) {
  		overlay.style.display = "";
@@ -79,12 +79,33 @@ addPhraseToDisplay(phraseArray);
  	
  	overlay.style.display ="flex"; 
  	missed = 0; 
-
+ 	resetHearts(); 
+ 	changeChosenButtons(); 
  	//to reset the game we need to replenish the hearts
  	//we need to erase the phrase that is showing
  	//we need to reset the number of misses
  	//
  }
+
+ function changeChosenButtons() {
+
+ 	let buttonCheck = document.getElementsByTagName('button');
+ 	for (var i = 0; i < buttonCheck.length; i++) {
+ 		buttonCheck[i].className = ""; 
+ 		buttonCheck[i].disabled = false; 
+ 	}
+ 		
+
+ }
+
+ function resetHearts () {
+ 	for (var i = 0; i < heart.length; i++) {
+ 		let newHeart = heart[i]; 
+ 		newHeart.setAttribute('src', 'images/liveHeart.png'); 
+ 	}
+ }
+
+
 
  qwerty.addEventListener('click', (event) => {
  		let letterFound = checkLetter(event);
