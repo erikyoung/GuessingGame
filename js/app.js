@@ -60,12 +60,13 @@ addPhraseToDisplay(phraseArray);
 
  function checkWin() {
  	if (letters.length === lettersShown.length) {
+ 		reset = true; 
  		overlay.style.display = ""; 
  		overlay.className = "win"; 
  		title.innerHTML = "<h1>You Win!</h1>";
       	startButton.textContent = "Start Again!"; 
       	svg.style.display = "none"; 
-      	reset = true; 
+      	
       	
       	
  		
@@ -83,8 +84,6 @@ addPhraseToDisplay(phraseArray);
 
  function resetGame() {
  	if (reset === true) {
-
-		
 	 	missed = 0; 
 	 	resetHearts(); 
 	 	changeChosenButtons(); 
@@ -148,6 +147,8 @@ addPhraseToDisplay(phraseArray);
 startButton.addEventListener('click', () => {
 	overlay.style.display = "none"; 
 	if (reset === true && missed === 5) {
+		resetGame(); 
+	} else if (reset === true && missed != 5) {
 		resetGame(); 
 	}
 }); 
