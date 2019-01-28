@@ -12,6 +12,7 @@ const overlayTitle = document.querySelector("h2");
 let missed = 0; 
 let reset = false; 
 
+
 let phrases = [
 	"Pat do your homework", 
 	"Pat stop teasing turtle", 
@@ -64,7 +65,10 @@ addPhraseToDisplay(phraseArray);
  		title.innerHTML = "<h1>You Win!</h1>";
       	startButton.textContent = "Start Again!"; 
       	svg.style.display = "none"; 
- 		resetGame(); 
+      	reset = true; 
+      	
+      	
+ 		
  		
  	} else if (missed === 5) {
  		overlay.style.display = "";
@@ -72,22 +76,28 @@ addPhraseToDisplay(phraseArray);
  		title.innerHTML = "<h1>Game Over!</h1>";
       	startButton.textContent = "Start Again!"; 
       	svg.style.display = "none"; 
- 		resetGame(); 
+      	reset = true; 
+ 		
  	} 
  }
 
  function resetGame() {
- 	if(reset = true) {
+ 	if (reset === true) {
 
- 	overlay.style.display ="flex"; 
- 	missed = 0; 
- 	resetHearts(); 
- 	changeChosenButtons(); 
- 	returnLettersToNormal();
- 	 
-    
-     }
+		
+	 	missed = 0; 
+	 	resetHearts(); 
+	 	changeChosenButtons(); 
+		returnLettersToNormal();
+		const phraseArray = getRandomPhraseAsArray(phrases); 
+		addPhraseToDisplay(phraseArray); 
+ 	}
+ 	
  }
+ 	
+ 
+  
+ 
 
  function changeChosenButtons() {
 
@@ -101,9 +111,10 @@ addPhraseToDisplay(phraseArray);
  }
 
  function returnLettersToNormal() {
- 	for (var i = 0; i < letters.length; i++) {
- 		letters[i].classList.remove('show');  
- 	}
+ 	const li = document.querySelectorAll(".letter, .space");
+      for (let i = 0; i < li.length; i += 1) {
+         ul.removeChild(li[i]);
+      }
  }
 
  function resetHearts () {
@@ -127,7 +138,8 @@ addPhraseToDisplay(phraseArray);
 
  		}
  	}
- 	checkWin(); 
+ 	checkWin();
+ 		
  }); 
 
 
@@ -135,4 +147,7 @@ addPhraseToDisplay(phraseArray);
 
 startButton.addEventListener('click', () => {
 	overlay.style.display = "none"; 
+	if (reset === true && missed === 5) {
+		resetGame(); 
+	}
 }); 
